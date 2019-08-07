@@ -1,7 +1,9 @@
-package com.xy.mvprxdemo;
+package com.xy.mvprxdemo.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.xy.mvprxdemo.R;
 
 public class MainActivity extends AppCompatActivity {
 
