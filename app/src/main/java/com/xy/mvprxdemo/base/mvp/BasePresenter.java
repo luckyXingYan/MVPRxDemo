@@ -5,5 +5,8 @@ package com.xy.mvprxdemo.base.mvp;
  * Email:lucky_xyic@sina.cn
  * ToDo:
  */
-public class BasePresenter {
+public abstract class BasePresenter<V extends IBaseView> extends MvpBasePresenter<V> {
+    public abstract void createModel();//创建对应的model
+
+    public abstract void cancelNetWork();//取消网络请求
 }
