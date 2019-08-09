@@ -21,6 +21,7 @@ import io.reactivex.disposables.Disposable;
 public abstract class HttpGsonObserver<T> extends BaseGsonObserver<T> {
 
     private WeakReference<Context> context;
+    private Disposable d;
 
     /**
      * @param context 显示弹框和业务跳转使用,特殊情况下可以为null此时只进行网络请求不进行弹窗和业务跳转
@@ -48,8 +49,14 @@ public abstract class HttpGsonObserver<T> extends BaseGsonObserver<T> {
     }
 
     @Override
-    public void disposable() {
+    public void disposable(Disposable d) {
+        this.d = d;
+    }
 
+    public void cancel() {
+        if (d != null && !d.isDisposed()) {
+            d.dispose();
+        }
     }
 
     @Override

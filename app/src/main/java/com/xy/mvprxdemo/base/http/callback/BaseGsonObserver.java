@@ -31,10 +31,7 @@ public abstract class BaseGsonObserver<T> implements Observer<ResultBean<T>> {
 
     @Override
     public void onSubscribe(Disposable d) {
-        if (!d.isDisposed()) {
-//            d.dispose();
-//            disposable();
-        }
+        disposable(d);
     }
 
     @Override
@@ -104,7 +101,7 @@ public abstract class BaseGsonObserver<T> implements Observer<ResultBean<T>> {
 
     public abstract void onCompleted();
 
-    public abstract void disposable();
+    public abstract void disposable(Disposable d);
 
     public abstract void onBizFailed(int code, String errorMsg);
 

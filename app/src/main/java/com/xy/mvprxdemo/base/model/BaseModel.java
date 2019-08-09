@@ -27,17 +27,16 @@ public class BaseModel {
     protected <T> void invoke(Observable<ResultBean<T>> observable, HttpGsonObserver<T> observer) {
         //绑定Activity的生命周期
 //        observer.autoDispose(observable);
+        mObserver = observer;
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
-        mObserver = observer;
-
+                .subscribe(mObserver);
     }
 
     public void cancel() {
         if (mObserver != null) {
-            mObserver.disposable();
+            mObserver.cancel();
         }
 
     }
